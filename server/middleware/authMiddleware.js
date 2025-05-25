@@ -3,6 +3,9 @@ import jwt from 'jsonwebtoken';
 //Middleware function to authenticate a token
  const authenticate = (req, res, next) => {
 
+    console.log(req); 
+    console.log(res); 
+
   // Get the token from the cookies
   const token = req.cookies.token;
 
