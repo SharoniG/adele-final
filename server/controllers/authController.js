@@ -1,12 +1,16 @@
-import User  from "../models/userModel";
+import mongoose from "mongoose";
+import User  from "../models/userModel.js";
 import bcrypt from "bcryptjs";  
 
 
-const login = async (req, res) => {
+const loginUser = async (req, res) => {
 
 const { email, password } = req.body;
+ console.log(email, password);
 
  try{
+
+  
     const existingUser = await User.find({ email });
     if (!existingUser.length) {
       return res.status(404).json({ message: "User not found" });
@@ -34,9 +38,10 @@ const { email, password } = req.body;
 
  }catch (error) {
     console.error("Login error:", error);
-    res.status(500).json({ message: "Internal server error" });
+    res.status(500).json({ message: "Internal server error!" });
   }
   
 }
 
 
+export default loginUser;
