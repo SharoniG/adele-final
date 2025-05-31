@@ -3,7 +3,8 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import userRoutes from './routes/userRoutes.js'; // Import user routes
-import productRoutes from './routes/productRoutes.js'
+import productRoutes from './routes/productRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
 
 const app = express();
 dotenv.config();
@@ -24,6 +25,7 @@ app.use(cookieParser());
 // Set up routing for all /users endpoints
 app.use('/users', userRoutes);
 app.use('/products', productRoutes);
+app.use('/orders', orderRoutes);
 
 
 app.listen(3000, () => {   
