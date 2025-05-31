@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 import User from "../models/userModel.js";
+import Product from "../models/productModel.js"
+import Order from "../models/orderModel.js"
 import bcrypt from "bcryptjs";
 
 const registerUser = async (req, res) => {
@@ -57,4 +59,28 @@ const registerUser = async (req, res) => {
 
 };
 
+const getProducts = async (req , res) => {
+    try{
+
+        const products = await Product.find();
+
+        if (products.length < 1){
+            return res.status(200).json('No products');
+        }
+      
+
+
+
+    }catch (err){
+        res.status(500).send('Error getting al products')
+    }
+
+
+
+}
+
+export default {
+    registerUser,
+    getProducts
+}
 
