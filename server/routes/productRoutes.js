@@ -1,19 +1,27 @@
 import express from 'express';
 //import loginUser from '../controllers/authController.js'; 
-import userController from '../controllers/userController.js';  
 import productController from '../controllers/productController.js'
 import authenticate from '../middleware/authMiddleware.js';  
 import authorize from '../middleware/roleMiddleware.js';  
 
+
 const router = express.Router();
 
-// Login
-router.post('/login', userController.loginUser);
+// get all products
 
-//register
-
-router.post('/register', userController.registerUser);
+router.get('/all', productController.getProducts);
 
 
+// get specific production
+router.get('/product/:product', productController.getProduct);
+
+
+//create product
+router.post(
+    '/product/:product',
+    authenticate,
+    authorize('admin'),
+    productController.createProduct
+  );
 
 export default router;
