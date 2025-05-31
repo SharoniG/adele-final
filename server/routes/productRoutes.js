@@ -8,7 +8,6 @@ import authorize from '../middleware/roleMiddleware.js';
 const router = express.Router();
 
 // get all products
-
 router.get('/all', productController.getProducts);
 
 

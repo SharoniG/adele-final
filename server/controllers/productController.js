@@ -3,11 +3,13 @@ import Product from "../models/productModel.js"
 //import bcrypt from "bcryptjs";
 
 const getProducts = async (req , res) => {
+    console.log(req)
     try{
         const products = await Product.find();
-        if (products.length < 1){
+        if (products.length === 0){
             return res.status(400).json('No products');
-        }    
+        }  
+        res.status(201).send({products});
     }catch (err){
         res.status(500).send('Error getting all products')
     }
