@@ -33,6 +33,15 @@ router.post(
 
   )
 
+  router.delete(
+    '/delete/:productCode',
+    authenticate,
+    authorize('admin'),
+    productController.deleteProduct
+  )
+
+
+
 
 export default router;
 

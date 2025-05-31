@@ -74,25 +74,40 @@ const createProduct = async (req , res) => {
 
 
 const updateProduct = async (req , res) => {
-
     try {
         const updates = {...req.body};
-
-
         const updated = await Product.findOneAndUpdate(
             { productCode : req.params.productCode},
             { $set: updates },
             { new: true , runValidators: true}            
         )
-
         if (!updated) {
             return res.status(404).json({ message: 'Product not found' });
-          }
-      
+          } 
           return res.status(200).json(updated);
     }catch (err){
         return res.status(400).json({ message: err.message });
     }
+}
+
+
+const deleteProduct = async (req , res) =>{
+    try{
+        const deleted = await Product.findOneAndDelete (
+            {productCode : req.params.productCode},     
+        )
+        if (!deleted) {
+            return res.status(404).json({ message: 'Product not found' });
+          }
+
+          return res.status(200).json({
+            message: `Product '${deleted.name}' was successfully deleted`
+          });
+
+    }catch (err){
+        return res.status(400).json({message: err.message})
+    }
+
 
 
 }
@@ -104,5 +119,6 @@ export default {
     getProducts,
     getProduct,
     createProduct,
-    updateProduct
+    updateProduct,
+    deleteProduct
 }
