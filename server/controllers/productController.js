@@ -3,7 +3,6 @@ import Product from "../models/productModel.js"
 //import bcrypt from "bcryptjs";
 
 const getProducts = async (req , res) => {
-    console.log(req)
     try{
         const products = await Product.find();
         if (products.length === 0){
@@ -31,25 +30,26 @@ const getProduct = async (req , res) => {
 
 const createProduct = async (req , res) => {
          try{
-
             const { name , price , description , category , imageUrl } = req.body;
 
             if  ( !name || !price || !description || !category || !imageUrl ) {
                 return res.status(400).send('All field are required');
             }
-
             const existingProduct = await Product.find();
-
             if (existingProduct > 0){
                 return res.status(400).send('You allready have a product with that name');
             }
+
+            const count = await Product.countDocuments();
+            const productCode = `PROD-${(count + 1).toString().padStart(3, '0')}`;
 
             const product = await Product.create({
                 name,
                 price,
                 description,
                 category,
-                imageUrl
+                imageUrl,
+                productCode
             });
         
             const returnProduct = {
@@ -58,7 +58,8 @@ const createProduct = async (req , res) => {
                 price: product.price,
                 category: product.category,
                 description: product.description,
-                imageUrl: product.imageUrl
+                imageUrl: product.imageUrl ,
+                productCode : product.productCode
             };
 
             res.status(201).send({
@@ -69,13 +70,39 @@ const createProduct = async (req , res) => {
          }catch (err){
 
          }
+}
+
+
+const updateProduct = async (req , res) => {
+
+    try {
+        const updates = {...req.body};
+
+
+        const updated = await Product.findOneAndUpdate(
+            { productCode : req.params.productCode},
+            { $set: updates },
+            { new: true , runValidators: true}            
+        )
+
+        if (!updated) {
+            return res.status(404).json({ message: 'Product not found' });
+          }
+      
+          return res.status(200).json(updated);
+    }catch (err){
+        return res.status(400).json({ message: err.message });
+    }
+
 
 }
+
 
 
 
 export default {
     getProducts,
     getProduct,
-    createProduct
+    createProduct,
+    updateProduct
 }

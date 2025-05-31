@@ -21,6 +21,10 @@ const productSchema = new mongoose.Schema({
       type: Number,
       default: 0
     },
+    productCode: { 
+      type: String, 
+      unique: true 
+    },
     createdAt: {
       type: Date,
       default: Date.now

@@ -23,4 +23,17 @@ router.post(
     productController.createProduct
   );
 
+  //update prroduct 
+
+  router.patch(
+    '/update/:productCode',
+    authenticate,
+    authorize('admin'),
+    productController.updateProduct
+
+  )
+
+
 export default router;
+
+//PROD-001
