@@ -2,8 +2,6 @@ import mongoose from "mongoose";
 import Product from "../models/productModel.js"
 //import bcrypt from "bcryptjs";
 
-
-
 const getProducts = async (req , res) => {
     try{
         const products = await Product.find();
