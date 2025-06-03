@@ -1,0 +1,12 @@
+# התעלמות מהתיקיות של node_modules
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# קבצים נוספים שאסור שיעלו לריפו
+.env
+.DS_Store
+
+# תיקיות build (אם תבני בעתיד)
+build/
+dist/
