@@ -9,4 +9,4 @@ server/node_modules/
 
 # תיקיות build (אם תבני בעתיד)
 build/
-dist/
+dist/.DS_Store
