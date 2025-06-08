@@ -3,7 +3,7 @@ import Order from '../models/orderModel.js'
 import Product from "../models/productModel.js";
 
 
-export const createOrder = async (req, res) => {
+ const createOrder = async (req, res) => {
   try {
 
     const items = req.body.items;
@@ -13,7 +13,7 @@ export const createOrder = async (req, res) => {
 
    
     if (!items || items.length === 0) {
-      return res.status(400).json({ message: 'אין פריטים בהזמנה' });
+      return res.status(400).json({ message: 'Empty order'});
     }
 
   
@@ -24,7 +24,7 @@ export const createOrder = async (req, res) => {
       const product = await Product.findById(item.product);
 
       if (!product) {
-        console.log(`מוצר לא נמצא: ${item.product}, ממשיכים הלאה`);
+        console.log( `Product not found ${item.product}`);
         continue;
       }
     
@@ -36,7 +36,7 @@ export const createOrder = async (req, res) => {
     }
 
 
-    // יצירת ההזמנה
+    // Creating the order
     const newOrder = new Order({
       customer: customerId,
       items: fullItems,
@@ -45,9 +45,10 @@ export const createOrder = async (req, res) => {
 
     const savedOrder = await newOrder.save();
 
-    res.status(201).json(savedOrder);
+    res.status(201).json(savedOrder); // print this to the user 
+
   } catch (err) {
-    res.status(500).json({ message: 'שגיאה ביצירת ההזמנה' });
+    res.status(500).json({ message: 'error creating the order' });
   }
 };
 
@@ -58,4 +59,6 @@ export const createOrder = async (req, res) => {
 
 export default {
 
+  createOrder
+  
 }
