@@ -32,6 +32,9 @@ const loginUser = async (req, res) => {
         maxAge
       }); 
 
+
+      console.log("JWT:", token);
+      
       res.status(200).json({ message: "Login successful", user: { id: user._id, email: user.email , role: user.role} });
 
 

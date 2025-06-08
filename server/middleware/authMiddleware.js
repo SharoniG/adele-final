@@ -3,9 +3,9 @@ import jwt from 'jsonwebtoken';
 //Middleware function to authenticate a token
  const authenticate = (req, res, next) => {
 
-    console.log(req); 
-    console.log(res); 
+  console.log('Cookies:', req.cookies);
 
+  
   // Get the token from the cookies
   const token = req.cookies.token;
 
@@ -21,6 +21,7 @@ import jwt from 'jsonwebtoken';
     // Store the decoded user information in the request object
     req.user = decoded;  
 
+    console.log('Decoded user:', decoded);
     next(); // next() -> a funcion the help us to proceed to the next function (in our case the endpoint)
   } catch (error) {
     res.status(401).send('Invalid token');  

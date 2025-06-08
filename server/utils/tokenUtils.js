@@ -11,7 +11,7 @@ import jwt from 'jsonwebtoken';
   It's used to identify the user and determine permissions. */
 
   return jwt.sign(
-    { id: user._id, role: user.role }, // Send the user id and the role for the user.
+    { _id: user._id, role: user.role }, // Send the user id and the role for the user.
     process.env.JWT_SECRET,  // Secret key for signing, they key in the .env file
     { expiresIn } //Token expiration time, we change the time depending on the role
   );

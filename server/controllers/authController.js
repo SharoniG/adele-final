@@ -23,6 +23,7 @@ const { email, password } = req.body;
     }
     const token = user.generateAuthToken();
 
+    console.log(token)
     const maxAge = user.role === 'admin'
         ? 60 * 60 * 1000        // One hour in miliseconds
         : 24 * 60 * 60 * 1000;  // 24 hours
