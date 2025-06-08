@@ -2,20 +2,19 @@ import mongoose from "mongoose";
 
 // תת-סכמה לפריטים בתוך ההזמנה
 const orderItemSchema = new mongoose.Schema({
+
   product: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Product', // ref to my Product model
     required: true
   },
-  productSnapshot: {
-    name: { type: String, required: true },
-    price: { type: Number, required: true }
-  },
+
   quantity: {
     type: Number,
     required: true,
     min: 1
   }
+
 });
 
 // סכמת ההזמנה הראשית

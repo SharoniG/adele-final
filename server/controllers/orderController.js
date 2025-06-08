@@ -1,19 +1,22 @@
 import mongoose from "mongoose";
 import Order from '../models/orderModel.js'
+import Product from "../models/productModel.js";
 
 
 export const createOrder = async (req, res) => {
   try {
+
     const items = req.body.items;
     const totalPrice = req.body.totalPrice;
-    const customerId = req.user._id;
 
-    // אם אין פריטים בהזמנה
+    const customerId = req.user._id; // we get this from the order route  -> authenticate authorize
+
+   
     if (!items || items.length === 0) {
       return res.status(400).json({ message: 'אין פריטים בהזמנה' });
     }
 
-    // בניית רשימת פריטים עם מידע על כל מוצר
+  
     const fullItems = [];
 
     for (let i = 0; i < items.length; i++) {
@@ -21,20 +24,18 @@ export const createOrder = async (req, res) => {
       const product = await Product.findById(item.product);
 
       if (!product) {
-        return res.status(404).json({ message: 'מוצר לא נמצא' });
+        console.log(`מוצר לא נמצא: ${item.product}, ממשיכים הלאה`);
+        continue;
       }
+    
 
       fullItems.push({
         product: product._id,
         quantity: item.quantity,
-        productSnapshot: {
-          name: product.name,
-          price: product.price
-        }
       });
     }
 
-    
+
     // יצירת ההזמנה
     const newOrder = new Order({
       customer: customerId,
