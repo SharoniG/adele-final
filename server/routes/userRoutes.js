@@ -14,6 +14,27 @@ router.post('/login', userController.loginUser);
 
 router.post('/register', userController.registerUser);
 
+//get all users 
+router.get('/', userController.getUsers);
+
+//delete user by id
+ router.delete(
+    'delete/userID', 
+    authenticate,
+    authorize('admin'),
+    userController.deleteUser
+);
+
+// update user by id
+router.put(
+    'update/userID', 
+    authenticate,
+    authorize('admin'),
+    userController.updateUser
+);
+
+
+
 
 
 export default router;

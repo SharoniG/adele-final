@@ -22,7 +22,7 @@ router.post(
   );
 
   router.put(
-    'update/:orderID',
+    '/update/:orderID',
     authenticate,
     authorize('admin'),
     orderController.updateOrderStatus
@@ -30,7 +30,7 @@ router.post(
 
 
   router.put(
-    'cancel/:orderID',
+    '/cancel/:orderID',
     authenticate,
     authorize('admin'),
     orderController.cancelOrder

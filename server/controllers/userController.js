@@ -102,10 +102,69 @@ const registerUser = async (req, res) => {
 };
 
 
+const getUsers = async (req,res) => {
+  try{
+    const users = await User.find();
+
+    if (users.length === 0){
+        return res.status(400).json('No users');
+    }  
+      res.status(201).send({users});
+  }catch (err){
+      res.status(500).send('Error getting all users')
+  }
+}
+
+//delete user 
+
+const deleteUser = async (req , res) => {
+  try{
+
+    const user = req.params.userID;
+
+    const deletedUser = await User.findById (user)
+
+    if (!deletedUser) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.status(200).json({ message: 'User deleted successfully', deletedUser });
+
+    }catch (err){
+        return res.status(400).json({message: err.message})
+    }
+
+}
+
+const updateUser = async (req, res) => {
+  try {
+    const userID = req.params.id;
+    const { name , email, role } = req.body;
+
+    const updatedUser = await Order.findByIdAndUpdate(
+      userID,
+      { name , email, role } ,
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.status(200).json(updatedUser);
+
+  } catch (error) {
+    console.error('Error updating user:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
 
 
 export default {
     registerUser,
-    loginUser
+    loginUser,
+    getUsers,
+    deleteUser,
+    updateUser
 }
 
