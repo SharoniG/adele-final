@@ -21,7 +21,20 @@ router.post(
     orderController.getOrders
   );
 
+  router.put(
+    'update/:orderID',
+    authenticate,
+    authorize('admin'),
+    orderController.updateOrderStatus
+  );
 
+
+  router.put(
+    'cancel/:orderID',
+    authenticate,
+    authorize('admin'),
+    orderController.cancelOrder
+  );
 
 
 
