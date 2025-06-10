@@ -14,4 +14,17 @@ router.post(
   );
   
 
+  router.get(
+    '/:costumerID',
+    authenticate,
+    authorize('admin'),
+    orderController.getOrders
+  );
+
+
+
+
+
+  
+
 export default router;
