@@ -1,6 +1,6 @@
 function Cart() {
 
-    return <h1>בית</h1>;
+    return <h1>cart</h1>;
     
   }
   

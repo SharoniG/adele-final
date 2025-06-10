@@ -1,6 +1,6 @@
 function Admin() {
 
-    return <h1>בית</h1>;
+    return <h1>admin</h1>;
     
   }
   

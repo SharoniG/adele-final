@@ -1,6 +1,6 @@
 function ProductDetails() {
 
-    return <h1>בית</h1>;
+    return <h1>details</h1>;
     
   }
   

@@ -1,6 +1,6 @@
 function Register() {
 
-    return <h1>בית</h1>;
+    return <h1>register</h1>;
     
   }
   

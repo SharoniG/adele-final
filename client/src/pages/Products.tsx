@@ -1,6 +1,6 @@
 function Products() {
 
-    return <h1>בית</h1>;
+    return <h1>products</h1>;
     
   }
   
