@@ -13,13 +13,12 @@ const productSchema = new mongoose.Schema({
     description: String,
     category: {
         type: String,
-        enum: ['general', 'stuffed', 'fashion','trend'],
+        enum: ['general', 'stuffed', 'accesories','trend'],
         default: 'general',
     },
     imageUrl: String,
     stock: {
       type: Number,
-      default: 0
     },
     productCode: { 
       type: String, 

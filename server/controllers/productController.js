@@ -30,7 +30,7 @@ const getProduct = async (req , res) => {
 
 const createProduct = async (req , res) => {
          try{
-            const { name , price , description , category , imageUrl } = req.body;
+            const { name , price , description , category , stock , imageUrl } = req.body;
 
             if  ( !name || !price || !description || !category || !imageUrl ) {
                 return res.status(400).send('All field are required');
@@ -49,6 +49,7 @@ const createProduct = async (req , res) => {
                 description,
                 category,
                 imageUrl,
+                stock,
                 productCode
             });
         
@@ -59,6 +60,7 @@ const createProduct = async (req , res) => {
                 category: product.category,
                 description: product.description,
                 imageUrl: product.imageUrl ,
+                stock : product.stock,
                 productCode : product.productCode
             };
 
