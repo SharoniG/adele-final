@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 
 // תת-סכמה לפריטים בתוך ההזמנה
 const orderItemSchema = new mongoose.Schema({
-
   product: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Product', // ref to my Product model
@@ -21,10 +20,10 @@ const orderItemSchema = new mongoose.Schema({
 const orderSchema = new mongoose.Schema({
   customer: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User', // ref to my User model  
+    ref: 'User', // רפרנס למודל יוזר
     required: true
   },
-  items: [orderItemSchema], // array of products usin the schema that is above 
+  items: [orderItemSchema], // מערלך של יוזרים
   totalPrice: {
     type: Number,
     required: true

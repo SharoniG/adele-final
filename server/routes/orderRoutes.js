@@ -14,6 +14,15 @@ router.post(
   );
   
 
+//Get order history 
+router.get(
+    '/',
+    authenticate,
+    authorize('admin'),
+    orderController.getOrdersHistory
+  );
+
+//Get order history per id
   router.get(
     '/:costumerID',
     authenticate,
@@ -21,6 +30,7 @@ router.post(
     orderController.getOrders
   );
 
+  //Update order
   router.put(
     '/update/:orderID',
     authenticate,
@@ -28,8 +38,8 @@ router.post(
     orderController.updateOrderStatus
   );
 
-
-  router.put(
+//Delete order
+  router.delete(
     '/cancel/:orderID',
     authenticate,
     authorize('admin'),

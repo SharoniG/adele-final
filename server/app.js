@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 import userRoutes from './routes/userRoutes.js'; // Import user routes
 import productRoutes from './routes/productRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
@@ -18,11 +19,15 @@ mongoose
   console.error('Error connecting to MongoDB:', err);
 }); 
 
+// מאפשר שליחת בקשה מכתובת שונה מהשרת שלי
+app.use(cors({
+  origin: "http://localhost:5173", 
+  credentials: true, 
+}));
 
 app.use(express.json());   
 app.use(cookieParser()); 
 
-// Set up routing for all /users endpoints
 app.use('/users', userRoutes);
 app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);

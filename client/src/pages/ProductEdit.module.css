@@ -1,0 +1,81 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.title {
+  font-size: 2rem;
+  color: #f5a623;
+  margin-bottom: 2rem;
+}
+
+.content {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  max-width: 1300px;
+}
+
+.imageContainer {
+  flex: 1;
+}
+
+.image {
+  width: 500px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.form {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-size: 1.1rem;
+  width: 100%;
+}
+
+.form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  color: #fff;
+}
+
+input, textarea, select {
+  padding: 0.6rem;
+  font-size: 1.1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 0.3rem;
+}
+
+.row {
+  display: flex;
+  gap: 1rem;
+}
+
+.saveButton {
+  background-color: #f5a623;
+  color: white;
+  font-weight: bold;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  font-size: 1rem;
+}
+
+.saveButton:hover {
+  background-color: #d98f1a;
+}
+
+textarea {
+  height: 130px; 
+  resize: vertical; 
+}

@@ -1,0 +1,152 @@
+.container {
+  padding: 2rem;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;  
+  border-radius: 8px;
+}
+
+.heading {
+  font-size: 2.3rem;
+  margin-bottom: 2rem;
+  color: #f5a623;
+  text-align: center;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.tabBtn {
+  background-color: #2c2c2c;
+  color: white;
+  border: 1px solid #444;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  transition: 0.3s ease;
+}
+
+.tabBtn:hover, .tabBtn.active {
+  background-color: #f5a623;
+  color: black;
+  font-weight: bold;
+}
+
+.addBtn {
+  background-color: #28a745;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.addBtn:hover {
+  background-color: #22983c;
+}
+
+
+.tableWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Table */
+.table {
+  width: 100%;
+  max-width: 1000px;
+  border-collapse: collapse;
+  background-color: #2b2b2b;
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 1.05rem;
+}
+
+.table th, .table td {
+  border-bottom: 1px solid #444;
+  text-align: center;
+  padding: 1rem;
+}
+
+.table td {
+  padding: 0.5rem !important;
+}
+
+.tr:hover {
+  background-color: #383838;
+}
+
+
+.input, .select {
+  padding: 0.5rem;
+  border-radius: 4px;
+  background-color: #2a2a2a;
+  color: white;
+  border: 1px solid #555;
+  font-size: 1rem;
+  width: 100%;
+}
+
+
+.editBtn, .deleteBtn, .saveBtn, .cancelBtn {
+  padding: 0.45rem 0.8rem;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 4px;
+  margin: 0 0.3rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.editBtn {
+  background-color: #2c2c2c;
+  border: 1px solid #444;
+  color: white;
+}
+
+.saveBtn {
+  background-color: #f5a623;
+  color: black;
+  font-weight: bold;
+}
+
+.cancelBtn {
+  background-color: #555;
+  color: white;
+}
+
+.deleteBtn {
+  background-color: #a32c2c;
+  color: white;
+  border: 1px solid #822121;
+}
+
+
+.loading {
+  text-align: center;
+  color: #ccc;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}

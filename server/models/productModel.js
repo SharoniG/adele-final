@@ -13,8 +13,8 @@ const productSchema = new mongoose.Schema({
     description: String,
     category: {
         type: String,
-        enum: ['general', 'stuffed', 'accesories','trend'],
-        default: 'general',
+        enum: ['Clothes', 'Music', 'Accessories','Hot', 'Home'],
+        default: 'Accessories',
     },
     imageUrl: String,
     stock: {

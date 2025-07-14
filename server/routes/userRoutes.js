@@ -11,28 +11,29 @@ const router = express.Router();
 router.post('/login', userController.loginUser);
 
 //register
-
 router.post('/register', userController.registerUser);
 
-//get all users 
+//Get all users 
 router.get('/', userController.getUsers);
 
-//delete user by id
+//Delete user by id
  router.delete(
-    'delete/userID', 
+    '/delete/:userID', 
     authenticate,
     authorize('admin'),
     userController.deleteUser
 );
 
-// update user by id
+//Update user by id
 router.put(
-    'update/userID', 
+    '/update/:userID', 
     authenticate,
     authorize('admin'),
     userController.updateUser
 );
 
+//Get user by id
+router.get('/id/:id', userController.getUserById);
 
 
 

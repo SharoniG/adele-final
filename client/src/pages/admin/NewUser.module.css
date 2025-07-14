@@ -1,0 +1,75 @@
+.container {
+  max-width: 500px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #1f1f1f;
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+}
+
+.heading {
+  text-align: center;
+  font-size: 2rem;
+  color: #f5a623;
+  margin-bottom: 2rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.inputGroup {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputGroup input, .inputGroup select {
+  width: 100%;
+  padding: 0.7rem 0.7rem 0.7rem 2.5rem;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background-color: #2a2a2a;
+  color: white;
+  font-size: 1rem;
+}
+
+.inputGroup select {
+  appearance: none;
+}
+
+.icon {
+  position: absolute;
+  left: 0.8rem;
+  color: #aaa;
+}
+
+.submitButton {
+  background-color: #f5a623;
+  color: black;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.submitButton:hover {
+  background-color: #e59e1f;
+}
+
+.successMessage {
+  color: #28a745;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.errorMessage {
+  color: #dc3545;
+  text-align: center;
+  margin-top: 1rem;
+}
